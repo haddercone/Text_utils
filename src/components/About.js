@@ -1,39 +1,30 @@
 import React, { useState } from "react";
 
-export default function About() {
-    const [accordionStyle, setAccordionStyle] = useState({
-            color: '',
-            backgroundColor: 'auto'
-    })
-    const [buttonText, setButtonText] = useState("Enable Dark Mode")
+export default function About(props) {
+    // const [myStyle, setmyStyle] = useState({
+    //         color: '',
+    //         backgroundColor: 'auto'
+    // })
 
-    const toggleStyle = () => {
-        if(accordionStyle.color === '#f3f3f3'){
-            setAccordionStyle({
-                color: 'rgb(40 42 43)',
-                backgroundColor: '#fff',
-                border: '2px solid #fff'
-            })
-            setButtonText("Enable Dark Mode")
-            
-        }
-        else{
-            setAccordionStyle({
-                color: '#f3f3f3',
-                backgroundColor: 'rgb(40 42 43)',
-            })
-            setButtonText("Enable Light Mode")
-        }
+    let myStyle = {
+      color:props.mode === 'dark'?'white':'black',
+      backgroundColor:props.mode === 'dark'?'#242424':'white',
+      border:'1px solid',
+      borderColor:props.mode === 'light'?'#242424':'transparent'
+
     }
+
+    
+
   return (
-    <div className="container" style={accordionStyle}>
+    <div className="container" style={{color:props.mode === 'light'?'black':'white'}}>
         <h1>About us:</h1>
-      <div className="accordion accordion-flush" id="accordionFlushExample">
+      <div className="accordion accordion-flush" id="accordionFlushExample"style={myStyle}>
         <div className="accordion-item">
           <h2 className="accordion-header" id="flush-headingOne">
             <button
               className="accordion-button collapsed"
-              style={accordionStyle}   
+              style={myStyle}   
               type="button" 
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseOne"
@@ -49,7 +40,7 @@ export default function About() {
             aria-labelledby="flush-headingOne"
             data-bs-parent="#accordionFlushExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={myStyle}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               first item's accordion body.
@@ -60,7 +51,7 @@ export default function About() {
           <h2 className="accordion-header" id="flush-headingTwo">
             <button
               className="accordion-button collapsed"
-              style={accordionStyle}
+              style={myStyle}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseTwo"
@@ -76,7 +67,7 @@ export default function About() {
             aria-labelledby="flush-headingTwo"
             data-bs-parent="#accordionFlushExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={myStyle}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               second item's accordion body. Let's imagine this being filled with
@@ -88,7 +79,7 @@ export default function About() {
           <h2 className="accordion-header" id="flush-headingThree">
             <button
               className="accordion-button collapsed"
-              style={accordionStyle}
+              style={myStyle}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseThree"
@@ -104,7 +95,7 @@ export default function About() {
             aria-labelledby="flush-headingThree"
             data-bs-parent="#accordionFlushExample"
           >
-            <div className="accordion-body" style={accordionStyle}>
+            <div className="accordion-body" style={myStyle}>
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               third item's accordion body. Nothing more exciting happening here
@@ -116,9 +107,9 @@ export default function About() {
         </div>
       </div>
 
-      <div className="container my-3">
-        <button type="botton" className="btn btn-primary mb-3" onClick={toggleStyle}>{buttonText}</button>
-      </div>
+        {/* <div className="container my-3">
+          <button type="botton" className="btn btn-primary mb-3" onClick={toggleStyle}>{buttonText}</button>
+        </div> */}
     </div>
   );
 }

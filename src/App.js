@@ -6,7 +6,9 @@ import Alert from "./components/Alert";
 import About from "./components/About";
 import {
   BrowserRouter as Router,
+
   Route,
+
   Routes
 } from "react-router-dom";
 
@@ -45,8 +47,8 @@ function App() {
       <Alert alert={alert}/>
       <div className="container my-3">
       <Routes>
-          <Route  path="/" element={ <TextForm showAlert = {showAlert} heading="Enter text to analyze" mode={mode}/> }/>
-          <Route  path="/about" element={<About />}/>
+          <Route exact path="/about" element={<About  mode={mode}/>}/>
+          <Route exact path="/" element={ <TextForm showAlert = {showAlert} heading="Enter text to analyze" mode={mode}/> }/>
         </Routes>
       </div>
     </Router>
